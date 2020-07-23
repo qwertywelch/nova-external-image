@@ -36,29 +36,51 @@ class ExternalImageBase extends Field
     {
         $this->rounded = true;
 
-        return $this->width(42)->height(42)->radius(99);
+        return $this->thumbWidth(42)->thumbHeight(42)->radius(7);
     }
 
     /**
-     * Set the width of the image
+     * Set the width of the image as a thumb
      *
      * @param int $width
      * @return $this
      */
-    public function width(int $width)
+    public function thumbWidth(int $width)
     {
         return $this->withMeta(['width' => $width]);
     }
 
     /**
-     * Set the height of the image
+     * Set the height of the image as a thumb
      *
      * @param int $height
      * @return $this
      */
-    public function height(int $height)
+    public function thumbHeight(int $height)
     {
         return $this->withMeta(['height' => $height]);
+    }
+
+    /**
+     * Set the width of the image in detail view
+     *
+     * @param int $width
+     * @return $this
+     */
+    public function detailMaxWidth(int $width)
+    {
+        return $this->withMeta(['maxWidth' => $width]);
+    }
+
+    /**
+     * Set the height of the image in detail view
+     *
+     * @param int $height
+     * @return $this
+     */
+    public function detailMaxHeight(int $height)
+    {
+        return $this->withMeta(['maxHeight' => $height]);
     }
 
     /**

@@ -2,7 +2,7 @@
     <panel-item :field="field">
         <div slot="value">
 
-            <img v-if="url" :src="url">
+            <img v-if="url" :src="url" :style="{ maxHeight, maxWidth, borderRadius }" >
 
             <span v-else>&mdash;</span>
         </div>
@@ -22,6 +22,18 @@
 
                 return this.field.value;
             }
-        }
+        },
+
+        maxWidth() {
+            return this.field.maxWidth + 'px' || 'auto';
+        },
+
+        maxHeight() {
+            return this.field.maxHeight + 'px' || 'auto';
+        },
+
+        borderRadius() {
+            return this.field.borderRadius + 'px' || '0';
+        },
     }
 </script>
