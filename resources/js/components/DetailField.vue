@@ -1,39 +1,39 @@
 <template>
-    <panel-item :field="field">
-        <div slot="value">
+	<panel-item :field="field">
+		<div slot="value">
 
-            <img v-if="url" :src="url" :style="{ maxHeight, maxWidth, borderRadius }" >
+			<img class="external-image-detail" :style="{ maxHeight, maxWidth, borderRadius }" v-if="url" :src="url">
 
-            <span v-else>&mdash;</span>
-        </div>
-    </panel-item>
+			<span v-else>&mdash;</span>
+		</div>
+	</panel-item>
 </template>
 
 <script>
 
-    export default {
-        props: ['resource', 'resourceName', 'resourceId', 'field'],
+	export default {
+		props: ['resource', 'resourceName', 'resourceId', 'field'],
 
-        computed: {
-            url() {
-                if (this.field.prefix) {
-                    return `${this.field.prefix}${this.field.value}`;
-                }
+		computed: {
+			url() {
+				if (this.field.prefix) {
+					return `${this.field.prefix}${this.field.value}`;
+				}
 
-                return this.field.value;
-            },
+				return this.field.value;
+			},
 
-            maxWidth() {
-                return this.field.maxWidth + 'px' || 'auto';
-            },
+			maxWidth() {
+				return this.field.maxWidth ? this.field.maxWidth + 'px' : 'auto';
+			},
 
-            maxHeight() {
-                return this.field.maxHeight + 'px' || 'auto';
-            },
+			maxHeight() {
+				return this.field.maxHeight ? this.field.maxHeight + 'px' : 'auto';
+			},
 
-            borderRadius() {
-                return this.field.borderRadius + 'px' || '0';
-            },
-        },
-    }
+			borderRadius() {
+				return this.field.borderRadius ? this.field.borderRadius + 'px' : '0';
+			},
+		},
+	}
 </script>
